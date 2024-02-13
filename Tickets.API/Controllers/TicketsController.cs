@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using TicketsAPI.Application.IService;
 
 namespace Tickets.API.Controllers
 {
@@ -8,11 +7,18 @@ namespace Tickets.API.Controllers
     [ApiController]
     public class TicketsController : ControllerBase
     {
-        // GET: api/<TicketsController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly ITicketService _ticketService;
+
+        public TicketsController(ITicketService ticketService)
         {
-            return new string[] { "value1", "value2" };
+            _ticketService = ticketService;
+        }
+
+        [HttpGet]
+        public ActionResult<List<TicketsAPI.Domain.Tickets>> Get()
+        {
+            var tickets = _ticketService.GetAllTickets();
+            return Ok(tickets);
         }
 
         // GET api/<TicketsController>/5

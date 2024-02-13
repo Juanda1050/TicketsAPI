@@ -1,0 +1,12 @@
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Domain\bin\Debug\net6.0\TicketsAPI.Domain.deps.json
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Domain\bin\Debug\net6.0\TicketsAPI.Domain.dll
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Domain\bin\Debug\net6.0\TicketsAPI.Domain.pdb
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Domain\obj\Debug\net6.0\TicketsAPI.Domain.csproj.AssemblyReference.cache
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Domain\obj\Debug\net6.0\TicketsAPI.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Domain\obj\Debug\net6.0\TicketsAPI.Domain.AssemblyInfoInputs.cache
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Domain\obj\Debug\net6.0\TicketsAPI.Domain.AssemblyInfo.cs
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Domain\obj\Debug\net6.0\TicketsAPI.Domain.csproj.CoreCompileInputs.cache
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Domain\obj\Debug\net6.0\TicketsAPI.Domain.dll
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Domain\obj\Debug\net6.0\refint\TicketsAPI.Domain.dll
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Domain\obj\Debug\net6.0\TicketsAPI.Domain.pdb
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Domain\obj\Debug\net6.0\ref\TicketsAPI.Domain.dll

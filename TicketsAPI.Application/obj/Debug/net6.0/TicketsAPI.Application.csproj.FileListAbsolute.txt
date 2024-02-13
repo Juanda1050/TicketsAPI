@@ -1,0 +1,15 @@
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\bin\Debug\net6.0\TicketsAPI.Application.deps.json
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\bin\Debug\net6.0\TicketsAPI.Application.dll
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\bin\Debug\net6.0\TicketsAPI.Application.pdb
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\bin\Debug\net6.0\TicketsAPI.Domain.dll
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\bin\Debug\net6.0\TicketsAPI.Domain.pdb
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\obj\Debug\net6.0\TicketsAPI.Application.csproj.AssemblyReference.cache
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\obj\Debug\net6.0\TicketsAPI.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\obj\Debug\net6.0\TicketsAPI.Application.AssemblyInfoInputs.cache
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\obj\Debug\net6.0\TicketsAPI.Application.AssemblyInfo.cs
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\obj\Debug\net6.0\TicketsAPI.Application.csproj.CoreCompileInputs.cache
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\obj\Debug\net6.0\TicketsAPI.Application.csproj.CopyComplete
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\obj\Debug\net6.0\TicketsAPI.Application.dll
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\obj\Debug\net6.0\refint\TicketsAPI.Application.dll
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\obj\Debug\net6.0\TicketsAPI.Application.pdb
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\TicketsAPI.Application\obj\Debug\net6.0\ref\TicketsAPI.Application.dll
