@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TicketsAPI.Domain
 {
-    public class Tickets
+    public class Ticket
     {
         public long Id { get; set; }
         public string Proveedor  { get; set; }

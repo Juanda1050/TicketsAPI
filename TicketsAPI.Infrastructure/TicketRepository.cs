@@ -10,9 +10,24 @@ namespace TicketsAPI.Infrastructure
 {
     public class TicketRepository : ITicketRepository
     {
-        public List<Tickets> GetAllTickets()
+        private readonly TicketsDBContext _ticketDBContext;
+
+        public TicketRepository(TicketsDBContext ticketDBContext)
         {
-            throw new NotImplementedException();
+            _ticketDBContext = ticketDBContext;
+        }
+
+        public Ticket CreateTicket(Ticket ticket)
+        {
+            _ticketDBContext.Add(ticket);
+            _ticketDBContext.SaveChanges();
+
+            return ticket;
+        }
+
+        public List<Ticket> GetAllTickets()
+        {
+            return _ticketDBContext.Recibos.ToList();
         }
     }
 }

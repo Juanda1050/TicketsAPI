@@ -9,6 +9,7 @@ namespace TicketsAPI.Application.IService
 {
     public interface ITicketService
     {
-        List<Tickets> GetAllTickets();
+        List<Ticket> GetAllTickets();
+        Ticket CreateTicket(Ticket ticket);
     }
 }

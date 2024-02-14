@@ -18,7 +18,12 @@ namespace TicketsAPI.Application
             _ticketRepository = ticketRepository;
         }
 
-        public List<Tickets> GetAllTickets()
+        public Ticket CreateTicket(Ticket ticket)
+        {
+            return _ticketRepository.CreateTicket(ticket);
+        }
+
+        public List<Ticket> GetAllTickets()
         {
             var ticketList = _ticketRepository.GetAllTickets();
             return ticketList;

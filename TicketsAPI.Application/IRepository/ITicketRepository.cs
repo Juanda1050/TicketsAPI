@@ -9,6 +9,7 @@ namespace TicketsAPI.Application.IRepository
 {
     public interface ITicketRepository
     {
-        List<Tickets> GetAllTickets();
+        List<Ticket> GetAllTickets();
+        Ticket CreateTicket(Ticket ticket);
     }
 }

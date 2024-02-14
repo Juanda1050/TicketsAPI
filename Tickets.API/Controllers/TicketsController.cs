@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TicketsAPI.Application.IService;
+using TicketsAPI.Domain;
 
 namespace Tickets.API.Controllers
 {
@@ -15,7 +16,7 @@ namespace Tickets.API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<TicketsAPI.Domain.Tickets>> Get()
+        public ActionResult<List<Ticket>> Get()
         {
             var tickets = _ticketService.GetAllTickets();
             return Ok(tickets);
@@ -28,10 +29,11 @@ namespace Tickets.API.Controllers
             return "value";
         }
 
-        // POST api/<TicketsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<Ticket> CreateTicket(Ticket ticket)
         {
+            var ticketCreated = _ticketService.CreateTicket(ticket);
+            return Ok(ticketCreated);
         }
 
         // PUT api/<TicketsController>/5
