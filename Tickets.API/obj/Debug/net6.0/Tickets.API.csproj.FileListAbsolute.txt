@@ -65,3 +65,6 @@ C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\Tickets.API\bin\Debug\net6.0
 C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\Tickets.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\Tickets.API\bin\Debug\net6.0\TicketsAPI.Infrastructure.dll
 C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\Tickets.API\bin\Debug\net6.0\TicketsAPI.Infrastructure.pdb
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\Tickets.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\Tickets.API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\juand\Documents\me\Extra\TicketsAPI.Domain\Tickets.API\bin\Debug\net6.0\Newtonsoft.Json.dll

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TicketsAPI.Application.IRepository;
+﻿using TicketsAPI.Application.IRepository;
 using TicketsAPI.Application.IService;
 using TicketsAPI.Domain;
 
@@ -18,15 +13,29 @@ namespace TicketsAPI.Application
             _ticketRepository = ticketRepository;
         }
 
-        public Ticket CreateTicket(Ticket ticket)
+        public async Task DeleteTicket(int id)
         {
-            return _ticketRepository.CreateTicket(ticket);
+            await _ticketRepository.DeleteTicket(id);
         }
 
-        public List<Ticket> GetAllTickets()
+        public async Task<Ticket> UpdateTicket(Ticket ticket)
         {
-            var ticketList = _ticketRepository.GetAllTickets();
-            return ticketList;
+            return await _ticketRepository.UpdateTicket(ticket);
+        }
+
+        public async Task<Ticket> CreateTicket(Ticket ticket)
+        {
+            return await _ticketRepository.CreateTicket(ticket);
+        }
+
+        public async Task<List<Ticket>> GetAllTickets()
+        {
+            return await _ticketRepository.GetAllTickets();
+        }
+
+        public async Task<Ticket> GetTicket(int id)
+        {
+            return await _ticketRepository.GetTicket(id);
         }
     }
 }

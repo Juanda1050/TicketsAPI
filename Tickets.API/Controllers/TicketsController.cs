@@ -16,36 +16,34 @@ namespace Tickets.API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Ticket>> Get()
+        public async Task<List<Ticket>> GetAll()
         {
             var tickets = _ticketService.GetAllTickets();
-            return Ok(tickets);
+            return await tickets;
         }
 
-        // GET api/<TicketsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<Ticket> GetById(int id)
         {
-            return "value";
+            return await _ticketService.GetTicket(id);
         }
 
         [HttpPost]
-        public ActionResult<Ticket> CreateTicket(Ticket ticket)
+        public async Task<Ticket> CreateTicket(Ticket ticket)
         {
-            var ticketCreated = _ticketService.CreateTicket(ticket);
-            return Ok(ticketCreated);
+            return await _ticketService.CreateTicket(ticket);
         }
 
-        // PUT api/<TicketsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public async Task<Ticket> UpdateTicket(Ticket ticket)
         {
+            return await _ticketService.UpdateTicket(ticket);
         }
 
-        // DELETE api/<TicketsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task DeleteTicket(int id)
         {
+            await _ticketService.DeleteTicket(id);
         }
     }
 }

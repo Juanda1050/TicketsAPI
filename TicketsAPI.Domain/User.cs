@@ -9,8 +9,8 @@ namespace TicketsAPI.Domain
     public class User
     {
         public Guid Id { get; set; }
-        public string Nombre { get; set; }
-        public string Contraseña { get; set; }
+        public string Nombre { get; set; } = string.Empty;
+        public string Contraseña { get; set; } = string.Empty;
         public DateTime FechaCreo { get; set; }
     }
 }
