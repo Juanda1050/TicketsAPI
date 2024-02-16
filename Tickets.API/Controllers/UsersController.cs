@@ -1,8 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using TicketsAPI.Application.IRepository;
 using TicketsAPI.Domain;
+using TicketsAPI.Infrastructure;
+using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
 namespace Tickets.API.Controllers
 {
@@ -11,27 +17,47 @@ namespace Tickets.API.Controllers
     [ApiController]
     public class UsersController : Controller
     {
+        private readonly TicketsDBContext _dbContext;
+        private readonly IConfiguration _configuration;
         private readonly ITokensRepository _tokenRepository;
 
-        public UsersController(ITokensRepository tokenRepository)
+        public UsersController(TicketsDBContext dBContext, ITokensRepository tokenRepository, IConfiguration configuration)
         {
+            _dbContext = dBContext;
+            _configuration = configuration;
             _tokenRepository = tokenRepository;
         }
 
-        // GET: api/<UsersController>
-        [HttpGet]
-        public List<string> Get()
+        [HttpPost]
+        public async Task<IActionResult> Login(Login model)
         {
-            var recruits = new List<string>
-        {
-            "John Doe",
-            "Jane Doe",
-            "Junior Doe"
-        };
+            if (!ModelState.IsValid)
+                return BadRequest();
 
-            return recruits;
+            var user = await _dbContext.Usuarios.FirstOrDefaultAsync(x => x.Nombre == model.Nombre && x.Contraseña == model.Contraseña);
+            if (user == null)
+                return Unauthorized();
+
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Nombre),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            };
+
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken
+            (
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims: claims,
+                expires: DateTime.Now.AddDays(7),
+                signingCredentials: signingCredentials
+            );
+
+            return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(token) });
         }
-
 
         [AllowAnonymous]
         [HttpPost]

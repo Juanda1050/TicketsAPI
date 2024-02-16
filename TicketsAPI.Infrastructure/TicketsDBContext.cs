@@ -15,6 +15,12 @@ namespace TicketsAPI.Infrastructure
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().HasData(new User { Id = Guid.NewGuid(), Nombre = "admin", Contraseña = "12345678", FechaCreo = DateTime.Now });
+        }
+
         public DbSet<Ticket> Recibos { get; set; }
+        public DbSet<User> Usuarios { get; set; }
     }
 }
