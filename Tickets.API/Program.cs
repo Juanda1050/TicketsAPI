@@ -59,7 +59,6 @@ builder.Services.AddDbContext<TicketsDBContext>(opt => opt.UseSqlServer(configur
 
 builder.Services.AddScoped<ITicketService, TicketService>();
 builder.Services.AddScoped<ITicketRepository, TicketRepository>();
-builder.Services.AddScoped<ITokensRepository, TokensRepository>();
 
 //Adding JWT to the DI Container
 builder.Services.AddAuthentication(x =>
