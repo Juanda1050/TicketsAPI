@@ -6,7 +6,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using TicketsAPI.Application;
-using TicketsAPI.Application.IRepository;
 using TicketsAPI.Application.IService;
 using TicketsAPI.Domain;
 using TicketsAPI.Infrastructure;
