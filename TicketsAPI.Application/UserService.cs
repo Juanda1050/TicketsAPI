@@ -13,12 +13,12 @@ namespace TicketsAPI.Application
             _userRepository = userRepository;
         }
 
-        public async Task<bool> CreateUser(Login model)
+        public async Task<string> CreateUser(Login model)
         {
             var existingUser = await _userRepository.FindByName(model.Nombre);
 
             if (existingUser != null)
-                throw new Exception($"El usuario {existingUser.Nombre} ya existe.");
+                throw new Exception($"El usuario {existingUser.Nombre} ya existe");
             
             var hashPassword = Utils.HashPassword(model.Contraseña);
             var newUser = new User()

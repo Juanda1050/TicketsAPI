@@ -9,6 +9,6 @@ namespace TicketsAPI.Application.IService
 {
     public interface IUserService
     {
-        Task<bool> CreateUser(Login model);
+        Task<string> CreateUser(Login model);
     }
 }

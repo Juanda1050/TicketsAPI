@@ -30,9 +30,17 @@ namespace Tickets.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public async Task<bool> Register(Login model)
+        public async Task<ActionResult<ResponseObject>> Register(Login model)
         {
-            return await _userService.CreateUser(model);
+            try
+            {
+                var message = await _userService.CreateUser(model);
+                return Ok(new ResponseObject { Message = message, IsError = false });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseObject { Message = ex.Message, IsError = true });
+            }
         }
 
         [AllowAnonymous]

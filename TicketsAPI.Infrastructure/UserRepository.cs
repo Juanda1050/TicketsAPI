@@ -23,18 +23,17 @@ namespace TicketsAPI.Infrastructure
             return await _dbContext.Usuarios.FirstOrDefaultAsync(x => x.Nombre == name);
         }
 
-        public async Task<bool> CreateUser(User model)
+        public async Task<string> CreateUser(User model)
         {
             try
             {
                 _dbContext.Add(model);
                 await _dbContext.SaveChangesAsync();
-                return true;
+                return "Usuario creado exitosamente";
             }
             catch (Exception)
             {
-                Console.WriteLine($"Error al crear el usuario");
-                return false;
+                return "Error al crear el usuario";
             }
         }
 
