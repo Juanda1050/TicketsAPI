@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,11 @@ namespace TicketsAPI.Infrastructure
         public UserRepository(TicketsDBContext dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        public async Task<User> FindByName(string name)
+        {
+            return await _dbContext.Usuarios.FirstOrDefaultAsync(x => x.Nombre == name);
         }
 
         public async Task<bool> CreateUser(User model)

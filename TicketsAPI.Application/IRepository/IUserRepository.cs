@@ -10,5 +10,6 @@ namespace TicketsAPI.Application.IRepository
     public interface IUserRepository
     {
         Task<bool> CreateUser(User model);
+        Task<User> FindByName(string name);
     }
 }

@@ -14,7 +14,6 @@ using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegiste
 
 namespace Tickets.API.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : Controller
@@ -31,21 +30,21 @@ namespace Tickets.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<bool> Register(Login model)
         {
             return await _userService.CreateUser(model);
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<IActionResult> Login(Login model)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var user = await _dbContext.Usuarios.FirstOrDefaultAsync(x => x.Nombre == model.Nombre && Utils.VerifyPassword(model.Contraseña, x.Contraseña));
-            if (user == null)
+            var user = await _dbContext.Usuarios.FirstOrDefaultAsync(x => x.Nombre == model.Nombre);
+            if (user == null || !Utils.VerifyPassword(model.Contraseña, user.Contraseña))
                 return Unauthorized();
 
             var claims = new[]

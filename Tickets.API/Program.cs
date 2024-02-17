@@ -58,7 +58,9 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<TicketsDBContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Tickets.API")));
 
 builder.Services.AddScoped<ITicketService, TicketService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITicketRepository, TicketRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 //Adding JWT to the DI Container
 builder.Services.AddAuthentication(x =>
