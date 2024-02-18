@@ -9,7 +9,7 @@ namespace TicketsAPI.Application.IRepository
 {
     public interface ITicketRepository
     {
-        Task<List<Ticket>> GetAllTickets(DateTime? fromDate = null);
+        Task<List<Ticket>> GetAllTickets(Guid userId, DateTime? fromDate = null);
         Task<Ticket> GetTicket(long id);
         Task<Ticket> CreateTicket(Ticket ticket);
         Task<Ticket> UpdateTicket(Ticket ticket);

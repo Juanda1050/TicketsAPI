@@ -22,7 +22,14 @@ namespace Tickets.API.Controllers
         [HttpGet]
         public async Task<List<Ticket>> GetAll(DateTime? fromDate = null)
         {
-            var tickets = await _ticketService.GetAllTickets(fromDate);
+            var userClaim = User.FindFirst("usuarioId")?.Value;
+
+            if (userClaim == null)
+                throw new Exception("No existe una sesión activa");
+
+            var userId = Guid.Parse(userClaim);
+
+            var tickets = await _ticketService.GetAllTickets(userId, fromDate);
             return tickets;
         }
 

@@ -53,9 +53,9 @@ namespace TicketsAPI.Application
             return await _ticketRepository.CreateTicket(newTicket);
         }
 
-        public async Task<List<Ticket>> GetAllTickets(DateTime? fromDate = null)
+        public async Task<List<Ticket>> GetAllTickets(Guid userId, DateTime? fromDate = null)
         {
-            return await _ticketRepository.GetAllTickets(fromDate);
+            return await _ticketRepository.GetAllTickets(userId, fromDate);
         }
 
         public async Task<Ticket> GetTicket(long id)

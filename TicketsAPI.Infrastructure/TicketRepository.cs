@@ -47,17 +47,16 @@ namespace TicketsAPI.Infrastructure
             return ticket;
         }
 
-        public async Task<List<Ticket>> GetAllTickets(DateTime? fromDate = null)
+        public async Task<List<Ticket>> GetAllTickets(Guid userId, DateTime? fromDate = null)
         {
-            if (fromDate.HasValue && fromDate == DateTime.MinValue)
-                return await _ticketDBContext.Recibos.ToListAsync();
-            else
-            {
-                return await _ticketDBContext.Recibos
-                    .Where(ticket => !fromDate.HasValue || ticket.Fecha.Date == fromDate.Value.Date)
-                    .ToListAsync();
-            }
+            var query = _ticketDBContext.Recibos.Where(x => x.UsuarioCreoId == userId);
+
+            if (fromDate.HasValue && fromDate != DateTime.MinValue)
+                query = query.Where(ticket => ticket.Fecha.Date == fromDate.Value.Date);
+
+            return await query.ToListAsync();
         }
+
 
         public async Task<Ticket> GetTicket(long id)
         {
