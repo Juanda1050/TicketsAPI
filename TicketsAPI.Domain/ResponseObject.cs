@@ -11,4 +11,10 @@ namespace TicketsAPI.Domain
         public string Message { get; set; }
         public bool IsError { get; set; }
     }
+
+    public class ResponseToken
+    {
+        public string Token { get; set; }
+        public Guid UsuarioId { get; set; }
+    }
 }

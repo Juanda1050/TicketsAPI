@@ -45,7 +45,7 @@ namespace Tickets.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<IActionResult> Login(Login model)
+        public async Task<ActionResult<ResponseToken>> Login(Login model)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
@@ -72,7 +72,7 @@ namespace Tickets.API.Controllers
                 signingCredentials: signingCredentials
             );
 
-            return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(token), UserId = user.Id });
+            return Ok(new ResponseToken { Token = new JwtSecurityTokenHandler().WriteToken(token), UsuarioId = user.Id });
         }
     }
 }

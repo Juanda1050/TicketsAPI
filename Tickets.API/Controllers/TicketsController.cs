@@ -5,7 +5,7 @@ using TicketsAPI.Domain;
 
 namespace Tickets.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TicketsController : ControllerBase
@@ -17,7 +17,7 @@ namespace Tickets.API.Controllers
             _ticketService = ticketService;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public async Task<List<Ticket>> GetAll(DateTime? fromDate = null)
         {
@@ -25,29 +25,28 @@ namespace Tickets.API.Controllers
             return tickets;
         }
 
-
-        //[Authorize]
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<Ticket> GetById(long id)
         {
             return await _ticketService.GetTicket(id);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         public async Task<Ticket> CreateTicket(Ticket ticket)
         {
             return await _ticketService.CreateTicket(ticket);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPut]
         public async Task<Ticket> UpdateTicket(Ticket ticket)
         {
             return await _ticketService.UpdateTicket(ticket);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task DeleteTicket(long id)
         {
