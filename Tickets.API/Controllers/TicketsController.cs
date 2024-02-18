@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TicketsAPI.Application.IService;
 using TicketsAPI.Domain;
 
@@ -36,14 +37,28 @@ namespace Tickets.API.Controllers
         [HttpPost]
         public async Task<Ticket> CreateTicket(Ticket ticket)
         {
-            return await _ticketService.CreateTicket(ticket);
+            var userClaim = User.FindFirst("usuarioId")?.Value;
+
+            if (userClaim == null)
+                throw new Exception("No existe una sesión activa");
+
+            var userId = Guid.Parse(userClaim);
+
+            return await _ticketService.CreateTicket(ticket, userId);
         }
 
         [Authorize]
         [HttpPut]
         public async Task<Ticket> UpdateTicket(Ticket ticket)
         {
-            return await _ticketService.UpdateTicket(ticket);
+            var userClaim = User.FindFirst("usuarioId")?.Value;
+
+            if (userClaim == null)
+                throw new Exception("No existe una sesión activa");
+
+            var userId = Guid.Parse(userClaim);
+
+            return await _ticketService.UpdateTicket(ticket, userId);
         }
 
         [Authorize]

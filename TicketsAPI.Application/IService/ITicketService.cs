@@ -11,8 +11,8 @@ namespace TicketsAPI.Application.IService
     {
         Task<List<Ticket>> GetAllTickets(DateTime? fromDate = null);
         Task<Ticket> GetTicket(long id);
-        Task<Ticket> CreateTicket(Ticket ticket);
-        Task<Ticket> UpdateTicket(Ticket ticket);
+        Task<Ticket> CreateTicket(Ticket ticket, Guid userId);
+        Task<Ticket> UpdateTicket(Ticket ticket, Guid userId);
         Task DeleteTicket(long id);
     }
 }

@@ -18,7 +18,7 @@ namespace TicketsAPI.Application
             await _ticketRepository.DeleteTicket(id);
         }
 
-        public async Task<Ticket> UpdateTicket(Ticket ticket)
+        public async Task<Ticket> UpdateTicket(Ticket ticket, Guid userId)
         {
             var existingTicket = await _ticketRepository.GetTicket(ticket.Id);
 
@@ -30,7 +30,7 @@ namespace TicketsAPI.Application
                 existingTicket.Comentario = ticket.Comentario;
                 existingTicket.Fecha = ticket.Fecha;
                 existingTicket.FechaModifico = DateTime.Now;
-                existingTicket.UsuarioModificoId = Guid.Parse("2B00027F-AEEB-4781-B37C-2472AB5F8E73");
+                existingTicket.UsuarioModificoId = userId;
             }
             else
                 throw new Exception("No hay registro por actualizar");
@@ -38,7 +38,7 @@ namespace TicketsAPI.Application
             return await _ticketRepository.UpdateTicket(existingTicket);
         }
 
-        public async Task<Ticket> CreateTicket(Ticket ticket)
+        public async Task<Ticket> CreateTicket(Ticket ticket, Guid userId)
         {
             var newTicket = new Ticket()
             {
@@ -48,7 +48,7 @@ namespace TicketsAPI.Application
                 Comentario = ticket.Comentario,
                 Fecha = ticket.Fecha,
                 FechaCreo = DateTime.Now,
-                UsuarioCreoId = Guid.Parse("2B00027F-AEEB-4781-B37C-2472AB5F8E73"),
+                UsuarioCreoId = userId,
             };
             return await _ticketRepository.CreateTicket(newTicket);
         }

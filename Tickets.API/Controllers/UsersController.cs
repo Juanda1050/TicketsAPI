@@ -58,6 +58,7 @@ namespace Tickets.API.Controllers
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Nombre),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("usuarioId", user.Id.ToString())
             };
 
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
