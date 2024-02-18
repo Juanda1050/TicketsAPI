@@ -47,16 +47,23 @@ namespace TicketsAPI.Infrastructure
             return ticket;
         }
 
-        public async Task<List<Ticket>> GetAllTickets()
+        public async Task<List<Ticket>> GetAllTickets(DateTime? fromDate = null)
         {
-            return await _ticketDBContext.Recibos.ToListAsync();
+            if (fromDate.HasValue && fromDate == DateTime.MinValue)
+                return await _ticketDBContext.Recibos.ToListAsync();
+            else
+            {
+                return await _ticketDBContext.Recibos
+                    .Where(ticket => !fromDate.HasValue || ticket.Fecha.Date == fromDate.Value.Date)
+                    .ToListAsync();
+            }
         }
 
         public async Task<Ticket> GetTicket(long id)
         {
             var ticket = await _ticketDBContext.Recibos.FirstOrDefaultAsync(x => x.Id == id);
 
-            if(ticket == null)
+            if (ticket == null)
                 throw new ArgumentException("No se pudo encontrar el recibo especificado.");
 
             return ticket;

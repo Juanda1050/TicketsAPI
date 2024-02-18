@@ -9,7 +9,7 @@ namespace TicketsAPI.Application.IService
 {
     public interface ITicketService
     {
-        Task<List<Ticket>> GetAllTickets();
+        Task<List<Ticket>> GetAllTickets(DateTime? fromDate = null);
         Task<Ticket> GetTicket(long id);
         Task<Ticket> CreateTicket(Ticket ticket);
         Task<Ticket> UpdateTicket(Ticket ticket);

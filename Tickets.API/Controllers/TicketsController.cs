@@ -19,11 +19,12 @@ namespace Tickets.API.Controllers
 
         //[Authorize]
         [HttpGet]
-        public async Task<List<Ticket>> GetAll()
+        public async Task<List<Ticket>> GetAll(DateTime? fromDate = null)
         {
-            var tickets = _ticketService.GetAllTickets();
-            return await tickets;
+            var tickets = await _ticketService.GetAllTickets(fromDate);
+            return tickets;
         }
+
 
         //[Authorize]
         [HttpGet("{id}")]
