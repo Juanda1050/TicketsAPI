@@ -10,9 +10,9 @@ namespace TicketsAPI.Application.IRepository
     public interface ITicketRepository
     {
         Task<List<Ticket>> GetAllTickets();
-        Task<Ticket> GetTicket(int id);
+        Task<Ticket> GetTicket(long id);
         Task<Ticket> CreateTicket(Ticket ticket);
         Task<Ticket> UpdateTicket(Ticket ticket);
-        Task DeleteTicket(int id);
+        Task DeleteTicket(long id);
     }
 }

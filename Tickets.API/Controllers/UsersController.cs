@@ -72,7 +72,7 @@ namespace Tickets.API.Controllers
                 signingCredentials: signingCredentials
             );
 
-            return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(token) });
+            return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(token), UserId = user.Id });
         }
     }
 }

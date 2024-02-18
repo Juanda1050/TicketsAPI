@@ -18,30 +18,25 @@ namespace TicketsAPI.Infrastructure
             _ticketDBContext = ticketDBContext;
         }
 
-        public async Task DeleteTicket(int id)
+        public async Task DeleteTicket(long id)
         {
-            var ticket = await _ticketDBContext.Recibos.FindAsync(id);
+            var ticket = await _ticketDBContext.Recibos.FirstOrDefaultAsync(x => x.Id == id);
 
             if (ticket != null)
             {
                 _ticketDBContext.Recibos.Remove(ticket);
                 await _ticketDBContext.SaveChangesAsync();
             }
+            else
+                throw new Exception($"El recibo No.{id} no existe");
         }
 
         public async Task<Ticket> UpdateTicket(Ticket ticket)
         {
-            var existingTicket = await _ticketDBContext.Recibos.FindAsync(ticket.Id);
-
-            if (existingTicket == null)
-            {
-                throw new ArgumentException("No se pudo encontrar el recibo especificado.");
-            }
-
             _ticketDBContext.Update(ticket);
             await _ticketDBContext.SaveChangesAsync();
 
-            return existingTicket;
+            return ticket;
         }
 
         public async Task<Ticket> CreateTicket(Ticket ticket)
@@ -57,9 +52,9 @@ namespace TicketsAPI.Infrastructure
             return await _ticketDBContext.Recibos.ToListAsync();
         }
 
-        public async Task<Ticket> GetTicket(int id)
+        public async Task<Ticket> GetTicket(long id)
         {
-            var ticket = await _ticketDBContext.Recibos.FindAsync(id);
+            var ticket = await _ticketDBContext.Recibos.FirstOrDefaultAsync(x => x.Id == id);
 
             if(ticket == null)
                 throw new ArgumentException("No se pudo encontrar el recibo especificado.");

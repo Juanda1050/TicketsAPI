@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketsAPI.Infrastructure;
 
@@ -11,9 +12,10 @@ using TicketsAPI.Infrastructure;
 namespace Tickets.API.Migrations
 {
     [DbContext(typeof(TicketsDBContext))]
-    partial class TicketsDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240218003536_AgregarMonedaTickets")]
+    partial class AgregarMonedaTickets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,9 +41,6 @@ namespace Tickets.API.Migrations
                     b.Property<DateTime>("FechaCreo")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("FechaModifico")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Moneda")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -54,9 +53,6 @@ namespace Tickets.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UsuarioCreoId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("UsuarioModificoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
